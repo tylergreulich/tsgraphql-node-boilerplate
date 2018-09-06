@@ -1,7 +1,7 @@
 import { GQL } from '../../types/schema';
 import { ResolverMap } from '../../types/graphql-utils';
 
-import { validateRegister } from '../../../validation/register';
+import { validateRegister } from '../../validation/register';
 import { UserInputError } from 'apollo-server-express';
 import { signJwtToken } from '../../utils/signJwtToken';
 

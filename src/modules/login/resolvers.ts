@@ -2,7 +2,7 @@ import { GQL } from '../../types/schema';
 import { ResolverMap } from '../../types/graphql-utils';
 
 import { UserInputError, AuthenticationError } from 'apollo-server-express';
-import { validateLogin } from '../../../validation/login';
+import { validateLogin } from '../../validation/login';
 import { signJwtToken } from '../../utils/signJwtToken';
 
 import * as bcrypt from 'bcrypt';

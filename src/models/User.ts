@@ -1,7 +1,6 @@
 import * as jwt from 'jsonwebtoken';
 import { Schema, Document, model } from 'mongoose';
 import { User } from '../interfaces/auth.interface';
-import { IPayload } from '../interfaces/payload.interface';
 import { Response } from 'express';
 
 const UserSchema: Schema = new Schema({

@@ -1,0 +1,15 @@
+# import { Token } from '../shared/schema.graphql'
+
+type Query {
+  bye: String!
+}
+
+type Mutation {
+  registerUser(
+    username: String!
+    email: String!
+    password: String!
+    confirmPassword: String!
+    isAdmin: Boolean
+  ): Token
+}

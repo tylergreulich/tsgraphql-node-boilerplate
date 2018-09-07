@@ -1,5 +1,5 @@
 import * as Validator from 'validator';
-import { User, AuthErrors } from '../src/interfaces/auth.interface';
+import { User, AuthErrors } from '../interfaces/auth.interface';
 import { isEmpty } from './is-empty';
 
 import { createError } from 'apollo-errors';

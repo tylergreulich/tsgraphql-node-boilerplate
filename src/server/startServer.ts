@@ -1,18 +1,15 @@
-import * as mongoose from 'mongoose';
 import { ApolloServer, gql } from 'apollo-server-express';
 import User from '../models/User';
-import { keys } from '../../config/keys';
 import { schema } from './createSchema';
 import { searchOriginalError } from '../utils/searchOriginalError';
 import { app } from './serverMiddleware';
+import { startWinstonLogger } from './startWinstonLogger';
+import { startMongoDbConnection } from './startMongoDbConnection';
+import * as winston from 'winston';
 
-mongoose
-  .connect(
-    process.env.MONGODB_URI || keys.MONGO_URI,
-    { useNewUrlParser: true }
-  )
-  .then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.log(err));
+startWinstonLogger();
+
+startMongoDbConnection();
 
 export const startServer = () => {
   const server = new ApolloServer({
@@ -21,7 +18,7 @@ export const startServer = () => {
       User,
       currentUser
     }),
-    // Resolves error directory when using mergeSchemas()
+    // Resolves the path to the errors object when using mergeSchemas()
     // mergeSchemas() ends up swallowing the error object before it's thrown
     formatError: error => searchOriginalError(error)
   });
@@ -31,7 +28,7 @@ export const startServer = () => {
   const port = process.env.PORT || 4000;
 
   app.listen(port, () =>
-    console.log(`Server listening at localhost:${port}${server.graphqlPath}`)
+    winston.info(`Server listening at localhost:${port}${server.graphqlPath}`)
   );
 
   return app;

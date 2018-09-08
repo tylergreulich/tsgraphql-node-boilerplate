@@ -8,7 +8,7 @@
     "dev": "ts-node-dev src/index.ts",
     "gen-schema-types": "ts-node src/scripts/createGraphqlTypes.ts",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch --verbose"
   },
   "jest": {
     "transform": {
@@ -45,7 +45,8 @@
     "ts-node": "^7.0.0",
     "ts-node-dev": "^1.0.0-pre.26",
     "typescript": "^3.0.1",
-    "validator": "^10.5.0"
+    "validator": "^10.5.0",
+    "winston": "^3.1.0"
   },
   "devDependencies": {
     "@types/bcrypt": "^2.0.0",

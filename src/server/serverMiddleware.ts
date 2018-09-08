@@ -2,6 +2,7 @@ import * as bodyParser from 'body-parser';
 import * as express from 'express';
 import * as cors from 'cors';
 import * as jwt from 'jsonwebtoken';
+import * as winston from 'winston';
 import { keys } from '../../config/keys';
 
 const app = express();
@@ -24,7 +25,7 @@ app.use(async (req: IExpressRequest, res, next) => {
       const currentUser = await jwt.verify(token, keys.SECRET);
       req.currentUser = currentUser;
     } catch (error) {
-      console.log(error);
+      winston.error(error);
     }
   }
   next();

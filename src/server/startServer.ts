@@ -20,6 +20,7 @@ export const startServer = () => {
     }),
     // Resolves the path to the errors object when using mergeSchemas()
     // mergeSchemas() ends up swallowing the error object before it's thrown
+    // see './createSchema.ts'
     formatError: error => searchOriginalError(error)
   });
 

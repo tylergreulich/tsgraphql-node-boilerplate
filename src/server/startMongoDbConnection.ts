@@ -9,9 +9,9 @@ const createMongooseConnection = () => {
   );
 };
 
-export const startMongoDbConnection = async () => {
+export const startMongoDbConnection = () => {
   try {
-    await createMongooseConnection();
+    createMongooseConnection();
     winston.info('Connected to MongoDB');
   } catch (error) {
     winston.error(error);
